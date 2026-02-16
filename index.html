@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eternal Love</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Loading Screen */
+#loader{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+.heart-loader{
+    width:60px;
+    height:60px;
+    background:red;
+    transform:rotate(45deg);
+    animation:beat 1s infinite;
+}
+.heart-loader:before,
+.heart-loader:after{
+    content:'';
+    width:60px;
+    height:60px;
+    background:red;
+    border-radius:50%;
+    position:absolute;
+}
+.heart-loader:before{top:-30px;left:0}
+.heart-loader:after{left:-30px;top:0}
+@keyframes beat{
+    0%,100%{transform:rotate(45deg) scale(1)}
+    50%{transform:rotate(45deg) scale(1.2)}
+}
+
+/* Navigation */
+nav{
+    position:fixed;
+    width:100%;
+    padding:15px 40px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.05);
+    display:flex;
+    justify-content:space-between;
+    z-index:1000;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+}
+
+/* Hero */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:4rem;
+    background:linear-gradient(90deg,gold,pink,red);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+.hero img{
+    width:250px;
+    margin-top:20px;
+    animation:heroGlow 3s infinite;
+}
+@keyframes heroGlow{
+    0%,100%{filter:drop-shadow(0 0 10px red)}
+    50%{filter:drop-shadow(0 0 30px crimson)}
+}
+
+/* Sections */
+section{
+    padding:100px 10%;
+    min-height:100vh;
+}
+.about{
+    text-align:center;
+}
+.about h2{
+    font-family:'Playfair Display';
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+/* Gallery */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.gallery-grid img{
+    width:100%;
+    transition:0.4s;
+    border-radius:10px;
+}
+.gallery-grid img:hover{
+    transform:scale(1.05);
+    filter:brightness(1.2);
+}
+
+/* Contact */
+.contact form{
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+}
+.contact input,
+.contact textarea{
+    margin:10px 0;
+    padding:10px;
+    background:rgba(255,255,255,0.1);
+    border:none;
+    color:white;
+}
+.contact button{
+    padding:10px;
+    background:linear-gradient(90deg,pink,red);
+    border:none;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111;
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    color:pink;
+    font-size:20px;
+    animation:floatUp 6s linear infinite;
+}
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:1}
+    100%{transform:translateY(-100vh);opacity:0}
+}
+
+/* Stars */
+.star{
+    position:fixed;
+    background:white;
+    width:2px;
+    height:2px;
+    animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    from{opacity:0.2}
+    to{opacity:1}
+}
+
+/* Scroll Reveal */
+.hidden{opacity:0;transform:translateY(40px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:linear-gradient(pink,red);border-radius:10px}
+</style>
+</head>
+
+<body>
+
+<div id="loader"><div class="heart-loader"></div></div>
+
+<nav>
+<div>♥ Eternal</div>
+<div>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<h1>ETERNAL LOVE</h1>
+<img src="rose1.jpg" alt="Rose">
+    <p></p>
+</section>
+
+<section class="about hidden" id="about">
+<h2>Our Story</h2>
+<p>
+Love is not just a moment.  
+It is a thousand heartbeats shared across time.  
+Every rose whispers your name,  
+every star shines for you.
+</p>
+    
+    <p>“You are all of my today and all of my tomorrows.”</p>
+</section>
+
+<section class="gallery hidden" id="gallery">
+<h2 style="text-align:center;margin-bottom:40px">Gallery</h2>
+<div class="gallery-grid">
+<img src="rose1.jpg">
+    <p>"Never above you, never below you, always beside you."</p>
+<img src="rose2.jpg">
+    "Whatever our souls are made of, his and mine are the same." 
+<img src="rose3.jpg">
+    <p>"Love is friendship that has caught fire."</p>
+<img src="rose4.jpg">
+    <p>"You are my heart, my life, my one and only thought."</p>
+<img src="rose1.jpg">
+    <p>"I love you not only for who you are, but for who I am when I am with you."</p>
+<img src="rose3.jpg">
+    <p>
+"I love you without knowing how, or when, or from where. I love you simply, without problems or pride: I love you in this way because I do not know any other way of loving but this..."
+</p>
+</section>
+
+<section class="contact hidden" id="contact">
+<h2 style="text-align:center;margin-bottom:20px">Send Love</h2>
+<form>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="4" placeholder="Your Message"></textarea>
+<button type="submit">Send ♥</button>
+</form>
+</section>
+
+<footer>
+Made with ♥ for You<br>
+© 2026 Love for You
+</footer>
+
+<script>
+/* Remove Loader */
+window.addEventListener("load",()=>{
+    document.getElementById("loader").style.display="none";
+});
+
+/* Floating Hearts */
+setInterval(()=>{
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="♥";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),7000);
+},500);
+
+/* Stars */
+for(let i=0;i<200;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+    star.style.background=Math.random()>0.8?"pink":"white";
+    document.body.appendChild(star);
+}
+
+/* Scroll Reveal */
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
+
+/* Mouse Parallax */
+document.addEventListener("mousemove",e=>{
+    const img=document.querySelector(".hero img");
+    let x=(window.innerWidth/2-e.pageX)/40;
+    let y=(window.innerHeight/2-e.pageY)/40;
+    img.style.transform=`translate(${x}px,${y}px)`;
+});
+</script>
+
+</body>
+</html>
