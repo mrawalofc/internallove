@@ -303,6 +303,64 @@ document.addEventListener("mousemove",e=>{
     img.style.transform=`translate(${x}px,${y}px)`;
 });
 </script>
+    </script>
+    <!-- Audio Player -->
+    <div class="audio-player" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; background: rgba(0, 0, 0, 0.7); padding: 15px; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="color: #ff69b4; font-size: 20px;">🎵 Dhun</span>
+            <span style="color: white; font-size: 14px;">Now Playing</span>
+        </div>
+        <audio id="bgMusic" controls loop style="width: 250px; height: 40px;">
+            <source src="Dhun - (Raag.Fm).mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div style="margin-top: 10px; text-align: center;">
+            <button id="playBtn" onclick="toggleMusic()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; color: white; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.3s;">▶ Play</button>
+        </div>
+    </div>
+
+    <script>
+        // Music Player Controls
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶ Play';
+                isPlaying = false;
+            } else {
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                playBtn.textContent = '⏸ Pause';
+                isPlaying = true;
+            }
+        }
+
+        // Auto-play on first user interaction
+        document.addEventListener('click', function initAudio() {
+            if (!isPlaying) {
+                audio.play().catch(e => console.log('Auto-play prevented:', e));
+                playBtn.textContent = '⏸ Pause';
+                isPlaying = true;
+            }
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
+
+        // Visit Time Tracker
+        const startTime = new Date();
+        document.getElementById('startTime').textContent = startTime.toLocaleTimeString();
+
+        function updateVisitTime() {
+            const now = new Date();
+            const diff = now - startTime;
+
+            const hours = Math.floor(diff / 3600000);
+            const minutes = Math.floor((diff % 3600000) / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+
+            const formatted = 
+                String(hou
 
 </body>
 </html>
